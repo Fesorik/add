@@ -1,0 +1,58 @@
+class Book:
+    def __init__(self, author, title, year, genre):
+        self.author = author
+        self.title = title
+        self.year = year
+        self.genre = genre
+
+class Library:
+    books = []
+    def addBook(self, book):
+        self.books.append(book)
+    
+    def removeBook(self, book):
+        self.books.remove(book)
+
+    def searchByAuthor(self, author):
+        books = []
+        for book in self.books:
+            if book.author == author:
+                books.append(book)
+        return books
+    
+    def searchByYear(self, year):
+        books = []
+        for book in self.books:
+            if book.year == year:
+                books.append(book)
+        return books
+
+    def searchByGenre(self, genre):
+        books = []
+        for book in self.books:
+            if book.genre == genre:
+               books.append(book)
+        return books
+library = Library(9)
+library.addBook(Book('Роберт Чалдіні', 'Психологія впливу', '2017', 'Енциклопедія'))
+library.addBook(Book('Джеймс Борг', 'Мистецтво говорити. Таємниці ефективного спілкування', '2019', 'Енциклопедія'))
+library.addBook(Book('Максим Ільяхов', 'Как доносить мысли и убеждать людей с помощью слов', '2021', 'Енциклопедія'))
+library.addBook(Book('Максим Ільяхов', 'Як створити дієвий текст', '2019', 'Енциклопедія'))
+library.addBook(Book('Стівен Кові', 'Семь навыков высокоэффективных людей', '2019', 'Енциклопедія'))
+library.addBook(Book('Марк Менсон', 'Тонкое искусство пофигизма.', '2019', 'Енциклопедія'))
+library.addBook(Book('Максим Ільяхов','Пиши, сокращай. Как создавать сильный текст','2019', 'Енциклопедія'))
+library.addBook(Book('Марк Менсон','Мужские правила','2020','Енциклопедія'))
+library.addBook(Book('Марк Менсон','Все хреново','2019','Енциклопедія'))
+
+author = 'Марк Менсон'
+books = library.searchByAuthor (author)
+if len(books) != 0:
+    book = books[0]
+
+    print('Кількість книг автора '+ author, len(books))
+    print('Автор книги ', author)
+    print('Титульна сторінка книги ' , book.title)
+
+    library.removeBook(book)
+    books = library.searchByAuthor(author)
+    print('Нова кількість книг автора ' + author, len(books))
